@@ -20,12 +20,12 @@ pipeline {
             post { always { junit 'reports/junit.xml' } }
         }
         stage('Build Image') {
-            steps { bat 'docker build -t %IMAGE%:%BUILD_NUMBER% -t %IMAGE%:latest .' }
+            steps { bat '%DOCKER% build -t %IMAGE%:%BUILD_NUMBER% -t %IMAGE%:latest .' }
         }
         stage('Deploy') {
             steps {
-                bat 'docker rm -f %CONTAINER%'
-                bat 'docker run -d --name %CONTAINER% -p 3000:3000 %IMAGE%:latest'
+                bat '%DOCKER% rm -f %CONTAINER%'
+                bat '%DOCKER% run -d --name %CONTAINER% -p 3000:3000 %IMAGE%:latest'
             }
         }
         stage('Verify') {
