@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE     = 'student-app'
         CONTAINER = 'student-app-container'
-        DOCKER    =  "${env.PATH};${DOCKER_BIN}"git
+        DOCKER    =  C:\Users\riyas\AppData\Local\Programs\DockerDesktop\resources\bin\docker.exe
     }
     triggers { pollSCM('H/2 * * * *') }
 
