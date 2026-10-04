@@ -4,6 +4,7 @@ pipeline {
     environment {
         IMAGE     = 'student-app'
         CONTAINER = 'student-app-container'
+        PATH     =  "${env.PATH};${DOCKER_BIN}"git
     }
     triggers { pollSCM('H/2 * * * *') }
 
